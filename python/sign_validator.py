@@ -8,8 +8,10 @@ class SignValidator:
             if char =='(' or char =='[' or char =='{' :
                 stack.append(char)
             elif char ==')' or char ==']' or char =='}':
+                if not stack:
+                    return False
                 ultimo = stack.pop()
-                if not (char == ')' and ultimo == '(') or (char == '}' and ultimo == '{') or (char == ']' and ultimo == '['):
+                if not ((char == ')' and ultimo == '(') or (char == '}' and ultimo == '{') or (char == ']' and ultimo == '[')):
                     return False
 
         return len(stack) == 0
